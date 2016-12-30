@@ -23,7 +23,7 @@ class PhotoCollectioViewController: UICollectionViewController {
         if let patternImage = UIImage(named: "") {
             view.backgroundColor = UIColor(patternImage: patternImage)
         }
-        collectionView!.backgroundColor = UIColor.clearColor()
+        collectionView!.backgroundColor = UIColor.clear
         collectionView!.contentInset = UIEdgeInsets(top: 23, left: 5, bottom: 10, right: 5)
 
     }
@@ -36,16 +36,16 @@ class PhotoCollectioViewController: UICollectionViewController {
     // MARK: Extension
 
 extension PhotoCollectioViewController {
-    override func collectionView(collectionView: UICollectionView,
+    override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
         return photos!.count
     }
-    override func collectionView(collectionView: UICollectionView,
-                                 cellForItemAtIndexPath indexPath: NSIndexPath)
+    override func collectionView(_ collectionView: UICollectionView,
+                                 cellForItemAt indexPath: IndexPath)
                                     -> UICollectionViewCell {
         let cell = collectionView
-            .dequeueReusableCellWithReuseIdentifier("AnnotatedPhotoCell",
-                                                    forIndexPath: indexPath) as? AnnotatedPhotoCell
+            .dequeueReusableCell(withReuseIdentifier: "AnnotatedPhotoCell",
+                                                    for: indexPath) as? AnnotatedPhotoCell
         cell!.photo = photos![indexPath.item]
         return cell!
     }
@@ -54,16 +54,16 @@ extension PhotoCollectioViewController {
     // MARK: Delegate
 
 extension PhotoCollectioViewController : PinterestLayoutDelegate {
-    func collectionView(collectionView: UICollectionView,
-                        heightForPhotoAtIndexPath indexPath: NSIndexPath,
+    func collectionView(_ collectionView: UICollectionView,
+                        heightForPhotoAtIndexPath indexPath: IndexPath,
                         withWidth width: CGFloat) -> CGFloat {
         let photo = photos![indexPath.item]
         let boundingRect = CGRect(x: 0, y: 0, width: width, height: CGFloat(MAXFLOAT))
-        let rect = AVMakeRectWithAspectRatioInsideRect(photo.image.size, boundingRect)
+        let rect = AVMakeRect(aspectRatio: (photo.image.size), insideRect: boundingRect)
         return rect.size.height
     }
-    func collectionView(collectionView: UICollectionView,
-                        heightForAnnotationAtIndexPath indexPath: NSIndexPath,
+    func collectionView(_ collectionView: UICollectionView,
+                        heightForAnnotationAtIndexPath indexPath: IndexPath,
                         withWidth width: CGFloat) -> CGFloat {
         let annotationPadding = CGFloat(4)
         let annotationHeaderHeight = CGFloat(17)

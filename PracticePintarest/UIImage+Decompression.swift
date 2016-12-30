@@ -11,10 +11,10 @@ import UIKit
 extension UIImage {
     var decompressedImage: UIImage {
         UIGraphicsBeginImageContextWithOptions(size, true, 0)
-        drawAtPoint(CGPoint.zero)
+        draw(at: CGPoint.zero)
         let decompressedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return decompressedImage
+        return decompressedImage!
     }
 
 }
