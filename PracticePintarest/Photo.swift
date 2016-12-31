@@ -18,7 +18,7 @@ class Photo {
             return photos
         }
         guard let photoFromPlist = NSDictionary(contentsOf: URL)?
-            .value(forKey: "photos") as? NSArray else {
+            .value(forKey: "photos") as? Array<Any> else {
             return photos
         }
         for item in photoFromPlist {
@@ -53,8 +53,8 @@ class Photo {
     }
 
     func heightForComment(_ font: UIFont, width: CGFloat) -> CGFloat {
-        let rect = NSString(string: comment)
-            .boundingRect(with: CGSize(width: width,
+        let rect = String(comment)
+                .boundingRect(with: CGSize(width: width,
                                     height: CGFloat(MAXFLOAT)),
                                     options: .usesLineFragmentOrigin,
                                     attributes: [NSFontAttributeName: font],
