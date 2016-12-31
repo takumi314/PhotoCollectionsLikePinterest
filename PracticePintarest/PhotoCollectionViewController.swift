@@ -11,9 +11,12 @@ import AVFoundation
 
 class PhotoCollectioViewController: UICollectionViewController {
 
+    // MARK: - Public properties
+
     var photos = Photo.allPhotos()
 
-    // MARK: Life cycle
+    // MARK: - Life cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if let layout = collectionView?.collectionViewLayout as? PinterestLayout {
@@ -33,7 +36,7 @@ class PhotoCollectioViewController: UICollectionViewController {
     }
 }
 
-    // MARK: Extension
+// MARK: - Extensions
 
 extension PhotoCollectioViewController {
     override func collectionView(_ collectionView: UICollectionView,
@@ -51,7 +54,7 @@ extension PhotoCollectioViewController {
     }
 }
 
-    // MARK: Delegate
+// MARK: - Delegates
 
 extension PhotoCollectioViewController : PinterestLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView,

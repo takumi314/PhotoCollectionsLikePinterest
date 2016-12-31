@@ -9,10 +9,10 @@
 import UIKit
 
 class AnnotatedPhotoCell: UICollectionViewCell {
-    @IBOutlet fileprivate weak var imageView: UIImageView!
+
+    // MARK: - Public properties
+
     @IBOutlet weak var imageViewHeightLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet fileprivate weak var captionLabel: UILabel!
-    @IBOutlet fileprivate weak var commentLabel: UILabel!
     var photo: Photo? {
         didSet {
             if let photo = photo {
@@ -22,4 +22,11 @@ class AnnotatedPhotoCell: UICollectionViewCell {
             }
         }
     }
+
+    // MARK: - Private properties
+
+    @IBOutlet fileprivate weak var imageView: UIImageView!
+    @IBOutlet fileprivate weak var captionLabel: UILabel!
+    @IBOutlet fileprivate weak var commentLabel: UILabel!
+
 }
